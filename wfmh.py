@@ -1,14 +1,14 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
 
 @app.route("/")
 def landing_page():
-    return 'Welcome to Work From My Home!'
+    return render_template('home.html')
 
 
-@app.route("/about/<username>")
+@app.route("/about")
 def about_wfmh():
     return 'Work From My Home information page'
 
