@@ -13,3 +13,7 @@ https://picsum.photos/
 https://flask-sqlalchemy.palletsprojects.com/en/2.x/models/
 
 https://docs.python.org/3/library/sqlite3.html
+
+https://realpython.com/lessons/package-initialization/
+
+https://www.pythonpool.com/python-circular-import/
