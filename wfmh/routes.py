@@ -1,4 +1,4 @@
-from flask import redirect, render_template, url_for
+from flask import flash, redirect, render_template, url_for
 from wfmh import app, db
 from wfmh.forms import WFMHRegistrationForm
 from wfmh.models import Home, Worker
@@ -36,6 +36,6 @@ def wfmh_registration():
 
     if r_form.errors != {}:
         for error_message in r_form.errors.values():
-            print(f'There was a problem with your registration attempt: {error_message}')
+            flash(f'There was a problem with your registration attempt: {error_message}', category='danger')
 
     return render_template('register.html', form=r_form)
