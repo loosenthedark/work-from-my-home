@@ -101,7 +101,26 @@
       </div>
     </nav>
     <h1>Click on any of the WFMH listings below to find out more!</h1>
-    <p>{{ test_data }}</p>
+
+    {% for home in homes %}
+    <div class="card" style="width: 18rem">
+      <img src="https://picsum.photos/400/600" class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">{{ home.location }}</h5>
+        <h6 class="card-subtitle">€{{ home.daily_rate }}</h6>
+        <p class="card-text">{{ home.description }}</p>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">An item</li>
+        <li class="list-group-item">A second item</li>
+        <li class="list-group-item">A third item</li>
+      </ul>
+      <div class="card-body">
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
+      </div>
+    </div>
+    {% endfor %}
 
     <!-- Optional JavaScript; choose one of the two! -->
 
