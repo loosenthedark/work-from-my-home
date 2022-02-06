@@ -1,4 +1,22 @@
 {% extends 'base.html' %} {% block title %} WFMH | Register {% endblock %} {%
 block content %}
-<h1>Register simply and securely below!</h1>
+<div class="container">
+  <h1 class="mt-5 mb-5 text-center">Register simply and securely below!</h1>
+  <form method="POST" class="registration-form">
+    {{ form.r_profile_name.label() }} {{
+    form.r_profile_name(class='form-control mb-3', placeholder='Enter profile name')
+    }}
+    {{ form.r_email.label() }} {{
+    form.r_email(class='form-control mb-3', placeholder='Enter email')
+    }}
+    {{ form.r_password.label() }} {{
+    form.r_password(class='form-control mb-3', placeholder='Enter password')
+    }}
+    {{ form.r_password_confirm.label() }} {{
+    form.r_password_confirm(class='form-control mb-5', placeholder='Confirm password')
+    }}
+    {{ form.r_submit(class='btn btn-primary')
+    }}
+  </form>
+</div>
 {% endblock %}

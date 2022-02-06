@@ -18,9 +18,9 @@ class WFMHRegistrationForm(FlaskForm):
     #         raise ValidationError(
     #             'That email is already registered! Please try again with a different email address.')
 
-    r_profile_name = StringField(label='enter profile name')
-    r_email = StringField(label='enter email')
+    r_profile_name = StringField(label='Enter profile name')
+    r_email = StringField(label='Enter email')
     r_password = PasswordField(
-        label='enter password')
-    r_password_confirm = PasswordField(label='confirm password')
-    submit = SubmitField(label='REGISTER')
+        label='Enter password')
+    r_password_confirm = PasswordField(label='Confirm password')
+    r_submit = SubmitField(label='REGISTER')
