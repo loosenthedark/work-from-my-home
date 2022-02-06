@@ -11,7 +11,7 @@ def landing_page():
 
 @app.route("/browse")
 def browse_homes():
-    return render_template('browse.html')
+    return render_template('browse.html', test_data='abc12345')
 
 @app.route("/about")
 def about_wfmh():
