@@ -1,5 +1,6 @@
 from flask import render_template
 from wfmh import app
+from wfmh.forms import WFMHRegistrationForm
 from wfmh.models import Home
 
 @app.route("/")
@@ -22,3 +23,9 @@ def about_wfmh():
 @app.route("/profile/<username>")
 def profile_page(username):
     return f"This is {username}'s Work From My Home profile page"
+
+
+@app.route("/register")
+def wfmh_registration():
+    r_form = WFMHRegistrationForm()
+    return render_template('register.html', form=r_form)
