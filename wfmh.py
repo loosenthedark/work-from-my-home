@@ -1,7 +1,27 @@
+import os
 from flask import Flask, render_template
+from flask_sqlalchemy import SQLAlchemy
+if os.path.exists('env.py'):
+    import env
 
 app = Flask(__name__)
 
+app.config[
+    'SQLALCHEMY_DATABASE_URI'] = os.environ.get(
+        'SQLALCHEMY_DATABASE_URI')
+
+db = SQLAlchemy(app)
+
+class Home(db.Model):
+    id = db.Column(db.Integer(), primary_key=True)
+    summary = db.Column(db.String(length=50), nullable=False, unique=True)
+    location = db.Column(db.String(length=25), nullable=False)
+    owner_email = db.Column(db.String(length=50), nullable=False)
+    daily_rate = db.Column(db.Integer(), nullable=False)
+    # worker = db.Column(db.Integer(), db.ForeignKey('worker.id'))
+
+    def __repr__(self):
+        return f'Home {self.id}: {self.summary}'
 
 @app.route("/")
 @app.route("/home")
@@ -11,13 +31,7 @@ def landing_page():
 
 @app.route("/browse")
 def browse_homes():
-    homes = [
-        {'id': 1, 'description': 'city centre studio', 'location': 'Dublin 2', 'identifier': '123456789', 'daily_rate': 100},
-        {'id': 2, 'description': 'terraced redbrick close to Luas', 'location': 'Dublin 8', 'identifier': '987654321', 'daily_rate': 85},
-        {'id': 3, 'description': 'quiet bungalow; pet-friendly', 'location': 'Wicklow', 'identifier': '693047511', 'daily_rate': 70},
-        {'id': 4, 'description': 'spacious loft apartment; available Mon-Wed', 'location': 'Dublin 1', 'identifier': '964827400', 'daily_rate': 140},
-        {'id': 5, 'description': 'bright, newly-renovated home office', 'location': 'Kildare', 'identifier': '830495118', 'daily_rate': 90}
-        ]
+    homes = Home.query.all()
     return render_template('browse.html', homes=homes)
 
 

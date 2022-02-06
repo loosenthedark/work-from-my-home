@@ -9,3 +9,7 @@ https://getbootstrap.com/docs/5.0/getting-started/introduction/
 https://jinja.palletsprojects.com/en/3.0.x/
 
 https://picsum.photos/
+
+https://flask-sqlalchemy.palletsprojects.com/en/2.x/models/
+
+https://docs.python.org/3/library/sqlite3.html
