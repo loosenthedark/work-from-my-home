@@ -1,7 +1,7 @@
-from flask import render_template
-from wfmh import app
+from flask import redirect, render_template, url_for
+from wfmh import app, db
 from wfmh.forms import WFMHRegistrationForm
-from wfmh.models import Home
+from wfmh.models import Home, Worker
 
 @app.route("/")
 @app.route("/home")
@@ -25,7 +25,17 @@ def profile_page(username):
     return f"This is {username}'s Work From My Home profile page"
 
 
-@app.route("/register")
+@app.route("/register", methods=['GET', 'POST'])
 def wfmh_registration():
     r_form = WFMHRegistrationForm()
+    if r_form.validate_on_submit():
+        successfully_registered_user = Worker(profile_name=r_form.r_profile_name.data, worker_email=r_form.r_email.data, worker_password = r_form.r_password.data)
+        db.session.add(successfully_registered_user)
+        db.session.commit()
+        return redirect(url_for('browse_homes'))
+
+    if r_form.errors != {}:
+        for error_message in r_form.errors.values():
+            print(f'There was a problem with your registration attempt: {error_message}')
+
     return render_template('register.html', form=r_form)

@@ -17,3 +17,7 @@ https://docs.python.org/3/library/sqlite3.html
 https://realpython.com/lessons/package-initialization/
 
 https://www.pythonpool.com/python-circular-import/
+
+https://testdriven.io/blog/csrf-flask/
+
+https://flask-wtf.readthedocs.io/en/v0.8.4/
