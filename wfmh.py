@@ -9,6 +9,10 @@ def landing_page():
     return render_template('home.html')
 
 
+@app.route("/browse")
+def browse_homes():
+    return render_template('browse.html')
+
 @app.route("/about")
 def about_wfmh():
     return 'Work From My Home information page'
