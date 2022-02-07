@@ -1,26 +1,66 @@
 {% extends 'base.html' %} {% block title %} WFMH | Browse {% endblock %} {%
-block heading %}Click on any of the WFMH listings below to find out more!{%
-endblock %} {% block content %} {% for home in homes %}
-<div class="card" style="width: 18rem">
-  <img src="https://picsum.photos/400/600" class="card-img-top" alt="..." />
-  <div class="card-body">
-    <h5 class="card-title">{{ home.location }}</h5>
-    <h6 class="card-subtitle">€{{ home.daily_rate }}</h6>
-    <p class="card-text">{{ home.summary }}</p>
-    <div class="btn-group" role="group" aria-label="Basic mixed styles example">
-      <button type="button" class="btn btn-info">Left</button>
-      <button type="button" class="btn btn-warning">Middle</button>
-      <button type="button" class="btn btn-success">Right</button>
+block content %}
+<div class="row m-3">
+  <div class="col-md-8">
+    <h2 class="text-center mb-3 pt-2 px-2">
+      Click on any of the WFMH listings below to find out more!
+    </h2>
+    {% for home in homes %}
+    <div class="card" style="width: 18rem">
+      <img src="https://picsum.photos/400/600" class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">{{ home.location }}</h5>
+        <h6 class="card-subtitle">€{{ home.daily_rate }}</h6>
+        <p class="card-text">{{ home.summary }}</p>
+        <div
+          class="btn-group"
+          role="group"
+          aria-label="Basic mixed styles example"
+        >
+          <button type="button" class="btn btn-info">Left</button>
+          <button type="button" class="btn btn-warning">Middle</button>
+          <button type="button" class="btn btn-success">Right</button>
+        </div>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">An item</li>
+        <li class="list-group-item">A second item</li>
+        <li class="list-group-item">A third item</li>
+      </ul>
+      <div class="card-body">
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <div class="col-4 bg-light">
+    <h2 class="text-center mb-3 pt-2 px-2">My WFMH reservations</h2>
+    <p class="text-center mb-3">Click on an item to place it back on the market</p>
+    <div class="row">
+      <!-- {% for bought_item in bought_items %} {% include
+      'includes/selling_modals.html' %}
+      <div class="col-md-6">
+        <div style="margin-bottom: 5px" class="card text-center bg-dark">
+          <div class="card-body">
+            <h5 class="card-title">{{ bought_item.name }}</h5>
+            <button
+              type="button"
+              class="btn btn-outline-info"
+              style="margin-bottom: 5px"
+              data-toggle="modal"
+              data-target="#Modal-SellingConfirm-{{ bought_item.id }}"
+            >
+              Sell this Item
+            </button>
+            <p class="card-text">
+              <strong> This item costs ${{ bought_item.price }} </strong>
+            </p>
+          </div>
+        </div>
+      </div>
+      {% endfor %} -->
     </div>
   </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">An item</li>
-    <li class="list-group-item">A second item</li>
-    <li class="list-group-item">A third item</li>
-  </ul>
-  <div class="card-body">
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
-  </div>
 </div>
-{% endfor %} {% endblock %}
+{% endblock %}
