@@ -1,5 +1,5 @@
 from flask import flash, redirect, render_template, url_for
-from flask_login import login_user
+from flask_login import login_user, logout_user
 from wfmh import app, db
 from wfmh.forms import WFMHLoginForm, WFMHRegistrationForm
 from wfmh.models import Home, Worker
@@ -55,9 +55,12 @@ def wfmh_login():
             flash(
                 'That username and password do not match. Please try again!', category='danger')
 
-    # if r_form.errors != {}:
-    #     for error_message in r_form.errors.values():
-    #         flash(
-    #             f'There was a problem with your registration attempt: {error_message}', category='danger')
-
     return render_template('login.html', form=l_form)
+
+
+@app.route("/logout")
+def wfmh_logout():
+    logout_user()
+    flash(
+        'You have logged out successfully!', category='info')
+    return redirect(url_for('landing_page'))

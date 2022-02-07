@@ -31,21 +31,6 @@ class WFMHRegistrationForm(FlaskForm):
 
 
 class WFMHLoginForm(FlaskForm):
-
-    # def validate_r_profile_name(self, new_user):
-    #     previously_registered_user = Worker.query.filter_by(
-    #         profile_name=new_user.data).first()
-    #     if previously_registered_user:
-    #         raise ValidationError(
-    #             'That username is already registered! Please try again with a different username.')
-
-    # def validate_r_email(self, new_email):
-    #     previously_registered_email = Worker.query.filter_by(
-    #         worker_email=new_email.data).first()
-    #     if previously_registered_email:
-    #         raise ValidationError(
-    #             'That email is already registered! Please try again with a different email address.')
-
     l_profile_name = StringField(label='Enter profile name', validators=[DataRequired()])
     l_password = PasswordField(
         label='Enter password', validators=[DataRequired()])
