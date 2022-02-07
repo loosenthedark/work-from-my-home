@@ -27,3 +27,5 @@ https://flask-login.readthedocs.io/en/latest/#how-it-works
 https://stackoverflow.com/questions/63231163/what-is-the-usermixin-in-flask
 
 https://flask-login.readthedocs.io/en/latest/#flask_login.login_required
+
+[HTML Formatter](https://www.freeformatter.com/html-formatter.html)
