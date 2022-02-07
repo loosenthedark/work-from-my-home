@@ -1,8 +1,13 @@
-from wfmh import bcrypt
-from wfmh import db
+from wfmh import bcrypt, db, login_manager
+from flask_login import UserMixin
 
 
-class Worker(db.Model):
+@login_manager.user_loader
+def load_user(user_id):
+    return Worker.query.get(int(user_id))
+
+
+class Worker(db.Model, UserMixin):
     id = db.Column(db.Integer(), primary_key=True)
     profile_name = db.Column(db.String(length=20), nullable=False, unique=True)
     worker_email = db.Column(db.String(length=50), nullable=False, unique=True)
@@ -22,6 +27,9 @@ class Worker(db.Model):
     def make_password_secure(self, unhashed_password):
         self.worker_password = bcrypt.generate_password_hash(
             unhashed_password).decode('utf-8')
+
+    def check_password_attempt(self, password_attempt):
+        return bcrypt.check_password_hash(self.worker_password, password_attempt)
 
 
 class Home(db.Model):

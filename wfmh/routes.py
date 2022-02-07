@@ -1,4 +1,5 @@
 from flask import flash, redirect, render_template, url_for
+from flask_login import login_user
 from wfmh import app, db
 from wfmh.forms import WFMHLoginForm, WFMHRegistrationForm
 from wfmh.models import Home, Worker
@@ -44,12 +45,15 @@ def wfmh_registration():
 @app.route("/login", methods=['GET', 'POST'])
 def wfmh_login():
     l_form = WFMHLoginForm()
-    # if r_form.validate_on_submit():
-    #     successfully_registered_user = Worker(profile_name=r_form.r_profile_name.data,
-    #                                           worker_email=r_form.r_email.data, make_password_secure=r_form.r_password.data)
-    #     db.session.add(successfully_registered_user)
-    #     db.session.commit()
-    #     return redirect(url_for('browse_homes'))
+    if l_form.validate_on_submit():
+        pre_login_user = Worker.query.filter_by(profile_name=l_form.l_profile_name.data).first()
+        if pre_login_user and pre_login_user.check_password_attempt(password_attempt=l_form.l_password.data):
+            login_user(pre_login_user)
+            flash(f'Success! You are now logged in as {pre_login_user.profile_name}', category='success')
+            return redirect(url_for('browse_homes'))
+        else:
+            flash(
+                'That username and password do not match. Please try again!', category='danger')
 
     # if r_form.errors != {}:
     #     for error_message in r_form.errors.values():

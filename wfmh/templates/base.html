@@ -118,7 +118,9 @@
       class="alert alert-{{ category }} alert-dismissible fade show"
       role="alert"
     >
+      {% if category == 'danger' %}
       <strong>Oops!</strong>
+      {% endif %}
       {{ message }}
       <button
         type="button"

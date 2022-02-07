@@ -21,3 +21,7 @@ https://www.pythonpool.com/python-circular-import/
 https://testdriven.io/blog/csrf-flask/
 
 https://flask-wtf.readthedocs.io/en/v0.8.4/
+
+https://flask-login.readthedocs.io/en/latest/#how-it-works
+
+https://stackoverflow.com/questions/63231163/what-is-the-usermixin-in-flask
