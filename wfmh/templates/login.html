@@ -6,6 +6,14 @@ content %}
     {{ form.hidden_tag() }} {{ form.l_profile_name.label() }} {{
     form.l_profile_name(class='form-control mb-3', placeholder='Enter profile name') }} {{ form.l_password.label() }} {{
     form.l_password(class='form-control mb-3', placeholder='Enter password') }} {{ form.l_submit(class='btn btn-primary') }}
+    <div class="redirect mb-3 mt-4">
+        <h6>Not registered?</h6>
+        <a
+          class="btn btn-sm btn-secondary"
+          href="{{ url_for('wfmh_registration') }}"
+          >REGISTER</a
+        >
+      </div>
   </form>
 </div>
 {% endblock %}

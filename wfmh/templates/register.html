@@ -1,22 +1,21 @@
-{% extends 'base.html' %} {% block title %} WFMH | Register {% endblock %} {% block heading %} Register simply and securely below! {% endblock %} {%
-block content %}
+{% extends 'base.html' %} {% block title %} WFMH | Register {% endblock %} {%
+block heading %} Register simply and securely below! {% endblock %} {% block
+content %}
 <div class="container">
   <form method="POST" class="registration-form" novalidate>
-    {{ form.hidden_tag() }}
-    {{ form.r_profile_name.label() }} {{
-    form.r_profile_name(class='form-control mb-3', placeholder='Enter profile name')
-    }}
-    {{ form.r_email.label() }} {{
-    form.r_email(class='form-control mb-3', placeholder='Enter email')
-    }}
-    {{ form.r_password.label() }} {{
-    form.r_password(class='form-control mb-3', placeholder='Enter password')
-    }}
+    {{ form.hidden_tag() }} {{ form.r_profile_name.label() }} {{
+    form.r_profile_name(class='form-control mb-3', placeholder='Enter profile name') }} {{ form.r_email.label() }} {{ form.r_email(class='form-control
+    mb-3', placeholder='Enter email') }} {{ form.r_password.label() }} {{
+    form.r_password(class='form-control mb-3', placeholder='Enter password') }}
     {{ form.r_password_confirm.label() }} {{
-    form.r_password_confirm(class='form-control mb-5', placeholder='Confirm password')
-    }}
-    {{ form.r_submit(class='btn btn-primary')
-    }}
+    form.r_password_confirm(class='form-control mb-4', placeholder='Confirm password') }}
+    {{ form.r_submit(class='btn btn-primary') }}
+    <div class="redirect mb-3 mt-4">
+      <h6>Already registered?</h6>
+      <a class="btn btn-sm btn-secondary" href="{{ url_for('wfmh_login') }}"
+        >LOGIN</a
+      >
+    </div>
   </form>
 </div>
 {% endblock %}
