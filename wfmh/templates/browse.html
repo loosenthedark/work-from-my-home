@@ -1,8 +1,6 @@
 {% extends 'base.html' %} {% block title %} WFMH | Browse {% endblock %} {%
-block content %}
-<h1>Click on any of the WFMH listings below to find out more!</h1>
-
-{% for home in homes %}
+block heading %}Click on any of the WFMH listings below to find out more!{%
+endblock %} {% block content %} {% for home in homes %}
 <div class="card" style="width: 18rem">
   <img src="https://picsum.photos/400/600" class="card-img-top" alt="..." />
   <div class="card-body">

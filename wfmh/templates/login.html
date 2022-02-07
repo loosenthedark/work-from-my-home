@@ -1,0 +1,11 @@
+{% extends 'base.html' %} {% block title %} WFMH | Login {% endblock %} {% block
+heading %}Log in below to begin browsing available homes!{% endblock %} {% block
+content %}
+<div class="container">
+  <form method="POST" class="registration-form" novalidate>
+    {{ form.hidden_tag() }} {{ form.l_profile_name.label() }} {{
+    form.l_profile_name(class='form-control mb-3', placeholder='Enter profile name') }} {{ form.l_password.label() }} {{
+    form.l_password(class='form-control mb-3', placeholder='Enter password') }} {{ form.l_submit(class='btn btn-primary') }}
+  </form>
+</div>
+{% endblock %}

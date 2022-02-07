@@ -1,7 +1,6 @@
-{% extends 'base.html' %} {% block title %} WFMH | Register {% endblock %} {%
+{% extends 'base.html' %} {% block title %} WFMH | Register {% endblock %} {% block heading %} Register simply and securely below! {% endblock %} {%
 block content %}
 <div class="container">
-  <h1 class="mt-5 mb-5 text-center">Register simply and securely below!</h1>
   <form method="POST" class="registration-form" novalidate>
     {{ form.hidden_tag() }}
     {{ form.r_profile_name.label() }} {{
