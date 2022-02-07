@@ -1,3 +1,4 @@
+from wfmh import bcrypt
 from wfmh import db
 
 
@@ -12,6 +13,15 @@ class Worker(db.Model):
 
     def __repr__(self):
         return f'Worker {self.id}: {self.profile_name}'
+
+    @property
+    def make_password_secure(self):
+        return self.make_password_secure
+
+    @make_password_secure.setter
+    def make_password_secure(self, unhashed_password):
+        self.worker_password = bcrypt.generate_password_hash(
+            unhashed_password).decode('utf-8')
 
 
 class Home(db.Model):

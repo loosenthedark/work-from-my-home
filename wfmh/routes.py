@@ -29,7 +29,7 @@ def profile_page(username):
 def wfmh_registration():
     r_form = WFMHRegistrationForm()
     if r_form.validate_on_submit():
-        successfully_registered_user = Worker(profile_name=r_form.r_profile_name.data, worker_email=r_form.r_email.data, worker_password = r_form.r_password.data)
+        successfully_registered_user = Worker(profile_name=r_form.r_profile_name.data, worker_email=r_form.r_email.data, make_password_secure = r_form.r_password.data)
         db.session.add(successfully_registered_user)
         db.session.commit()
         return redirect(url_for('browse_homes'))
