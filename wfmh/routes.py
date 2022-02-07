@@ -1,5 +1,5 @@
 from flask import flash, redirect, render_template, url_for
-from flask_login import login_user, logout_user
+from flask_login import login_required, login_user, logout_user
 from wfmh import app, db
 from wfmh.forms import WFMHLoginForm, WFMHRegistrationForm
 from wfmh.models import Home, Worker
@@ -11,6 +11,7 @@ def landing_page():
 
 
 @app.route("/browse")
+@login_required
 def browse_homes():
     homes = Home.query.all()
     return render_template('browse.html', homes=homes)

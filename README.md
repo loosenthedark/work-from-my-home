@@ -25,3 +25,5 @@ https://flask-wtf.readthedocs.io/en/v0.8.4/
 https://flask-login.readthedocs.io/en/latest/#how-it-works
 
 https://stackoverflow.com/questions/63231163/what-is-the-usermixin-in-flask
+
+https://flask-login.readthedocs.io/en/latest/#flask_login.login_required

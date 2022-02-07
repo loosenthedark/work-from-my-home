@@ -1,3 +1,22 @@
 {% extends 'base.html' %} {% block title %} WFMH | Home {% endblock %} {% block
-heading %}Work From My Home home page{% endblock %} {% block content %}{%
-endblock %}
+heading %}Work From My Home home page{% endblock %} {% block content %}
+<div class="p-3 p-md-5 m-md-3 text-center bg-primary" style="color: #fff">
+  <div class="col-md-5 p-lg-5 mx-auto my-5">
+    <h2 class="display-5 font-weight-normal">
+      There are hundreds of homes available to work from, with locations and
+      budgets to suit everyone...
+    </h2>
+    <p class="text-warning lead fst-italic fw-normal">
+      Start browsing the WFMH marketplace today, and get 20% off your first
+      reservation!
+    </p>
+    <a class="btn btn-success" href="{{ url_for('browse_homes') }}"
+      >GET STARTED</a
+    >
+  </div>
+  <div class="product-device box-shadow d-none d-md-block"></div>
+  <div
+    class="product-device product-device-2 box-shadow d-none d-md-block"
+  ></div>
+</div>
+{% endblock %}
