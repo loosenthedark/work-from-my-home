@@ -52,11 +52,22 @@
             <li class="nav-item">
               <a class="nav-link" href="#">About</a>
             </li>
+            {% if current_user.is_authenticated %}
+             <li class="nav-item pt-2 pb-2">
+              <strong>Welcome, {{ current_user.profile_name }}!</strong>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">My Profile</a>
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('browse_homes') }}"
                 >Browse Homes</a
               >
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Logout</a>
+            </li>
+            {% else %}
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('wfmh_registration') }}"
                 >Register</a
@@ -65,9 +76,7 @@
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('wfmh_login') }}">Login</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">My Profile</a>
-            </li>
+            {% endif %}
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle"
@@ -120,8 +129,7 @@
     >
       {% if category == 'danger' %}
       <strong>Oops!</strong>
-      {% endif %}
-      {{ message }}
+      {% endif %} {{ message }}
       <button
         type="button"
         class="btn-close"
