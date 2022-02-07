@@ -1,11 +1,11 @@
 {% extends 'base.html' %} {% block title %} WFMH | Browse {% endblock %} {%
-block content %} {% include 'helpers/modals_buying.html' %}
+block content %}
 <div class="row m-3">
   <div class="col-md-8">
     <h2 class="text-center mb-3 pt-2 px-2">
       Click on any of the WFMH listings below to find out more!
     </h2>
-    {% for home in homes %}
+    {% for home in homes %} {% include 'helpers/modals_booking.html' %}
     <div class="card" style="width: 18rem">
       <img src="https://picsum.photos/400/600" class="card-img-top" alt="..." />
       <div class="card-body">
@@ -17,17 +17,25 @@ block content %} {% include 'helpers/modals_buying.html' %}
           role="group"
           aria-label="Basic mixed styles example"
         >
+          <!-- button to trigger info modal -->
           <button
             type="button"
             class="btn btn-primary"
             data-bs-toggle="modal"
-            data-bs-target="#exampleModal1"
+            data-bs-target="#infoModal{{ home.id }}"
           >
-            LEFT
+            INFO
           </button>
-          <button type="button" class="btn btn-warning">Middle</button>
-          <button type="button" class="btn btn-success">Right</button>
-          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-warning">CENTRE</button>
+          <!-- button to trigger booking modal -->
+          <button
+            type="button"
+            class="btn btn-success"
+            data-bs-toggle="modal"
+            data-bs-target="#bookingModal{{ home.id }}"
+          >
+            BOOK
+          </button>
         </div>
       </div>
       <ul class="list-group list-group-flush">
