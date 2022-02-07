@@ -20,6 +20,10 @@ class Worker(db.Model, UserMixin):
         return f'Worker {self.id}: {self.profile_name}'
 
     @property
+    def format_wallet(self):
+        return f'€{self.wallet:,}'
+
+    @property
     def make_password_secure(self):
         return self.make_password_secure
 

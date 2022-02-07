@@ -53,8 +53,13 @@
               <a class="nav-link" href="#">About</a>
             </li>
             {% if current_user.is_authenticated %}
-             <li class="nav-item pt-2 pb-2">
+            <li class="nav-item pt-2 pb-2">
               <strong>Welcome, {{ current_user.profile_name }}!</strong>
+            </li>
+            <li class="nav-item pt-2 pb-2 text-success">
+              <strong
+                >You currently have {{ current_user.format_wallet }} in your wallet</strong
+              >
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">My Profile</a>
