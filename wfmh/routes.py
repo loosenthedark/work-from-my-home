@@ -34,6 +34,9 @@ def wfmh_registration():
         successfully_registered_user = Worker(profile_name=r_form.r_profile_name.data, worker_email=r_form.r_email.data, make_password_secure = r_form.r_password.data)
         db.session.add(successfully_registered_user)
         db.session.commit()
+        login_user(successfully_registered_user)
+        flash(
+            f'Account created successfully! You are now logged in as {successfully_registered_user.profile_name}', category='success')
         return redirect(url_for('browse_homes'))
 
     if r_form.errors != {}:
