@@ -1,5 +1,5 @@
 from flask import flash, redirect, render_template, request, url_for
-from flask_login import login_required, login_user, logout_user
+from flask_login import current_user, login_required, login_user, logout_user
 from wfmh import app, db
 from wfmh.forms import WFMHLoginForm, WFMHRegistrationForm, WFMHBookingForm, WFMHCancellationForm
 from wfmh.models import Home, Worker
@@ -14,11 +14,20 @@ def landing_page():
 @login_required
 def browse_homes():
     booking_form = WFMHBookingForm()
-    if booking_form.validate_on_submit():
-        print(request.form.get('wfmh_booking'))
     cancellation_form = WFMHCancellationForm()
-    homes = Home.query.all()
-    return render_template('browse.html', homes=homes, b_form=booking_form, c_form = cancellation_form)
+    if request.method == 'POST':
+        wfmh_booking = request.form.get('wfmh_booking')
+        wfmh_booking_obj = Home.query.filter_by(summary=wfmh_booking).first()
+        if wfmh_booking_obj:
+            wfmh_booking_obj.reserved_by = current_user.id
+            current_user.wallet -= wfmh_booking_obj.daily_rate
+            db.session.commit()
+            flash(
+                f'Booking confirmed! You just booked {wfmh_booking_obj.summary} for €{wfmh_booking_obj.daily_rate}.', category='success')
+        return redirect(url_for('browse_homes'))
+    if request.method == 'GET':
+        homes = Home.query.filter_by(reserved_by=None)
+        return render_template('browse.html', homes=homes, b_form=booking_form, c_form=cancellation_form)
 
 
 @app.route("/about")
