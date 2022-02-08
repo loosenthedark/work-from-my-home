@@ -32,4 +32,6 @@ https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iii-web-forms
 
 https://tedboy.github.io/flask/generated/generated/flask.Request.html
 
+https://www.youtube.com/watch?v=Qr4QMBUPxWo
+
 [HTML Formatter](https://www.freeformatter.com/html-formatter.html)

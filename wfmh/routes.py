@@ -19,11 +19,15 @@ def browse_homes():
         wfmh_booking = request.form.get('wfmh_booking')
         wfmh_booking_obj = Home.query.filter_by(summary=wfmh_booking).first()
         if wfmh_booking_obj:
-            wfmh_booking_obj.reserved_by = current_user.id
-            current_user.wallet -= wfmh_booking_obj.daily_rate
-            db.session.commit()
-            flash(
-                f'Booking confirmed! You just booked {wfmh_booking_obj.summary} for €{wfmh_booking_obj.daily_rate}.', category='success')
+            if current_user.has_sufficient_funds(wfmh_booking_obj):
+                wfmh_booking_obj.reserved_by = current_user.id
+                current_user.wallet -= wfmh_booking_obj.daily_rate
+                db.session.commit()
+                flash(
+                    f'Booking confirmed! You just booked {wfmh_booking_obj.summary} for €{wfmh_booking_obj.daily_rate}.', category='success')
+            else:
+                flash(
+                    f"Unfortunately you don't have sufficient funds to book {wfmh_booking_obj.summary} @ {wfmh_booking_obj.daily_rate}.", category='danger')
         return redirect(url_for('browse_homes'))
     if request.method == 'GET':
         homes = Home.query.filter_by(reserved_by=None)

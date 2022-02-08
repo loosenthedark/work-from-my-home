@@ -35,6 +35,9 @@ class Worker(db.Model, UserMixin):
     def check_password_attempt(self, password_attempt):
         return bcrypt.check_password_hash(self.worker_password, password_attempt)
 
+    def has_sufficient_funds(self, home_obj):
+        return self.wallet >= home_obj.daily_rate
+
 
 class Home(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
