@@ -28,4 +28,8 @@ https://stackoverflow.com/questions/63231163/what-is-the-usermixin-in-flask
 
 https://flask-login.readthedocs.io/en/latest/#flask_login.login_required
 
+https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iii-web-forms
+
+https://tedboy.github.io/flask/generated/generated/flask.Request.html
+
 [HTML Formatter](https://www.freeformatter.com/html-formatter.html)

@@ -1,7 +1,7 @@
-from flask import flash, redirect, render_template, url_for
+from flask import flash, redirect, render_template, request, url_for
 from flask_login import login_required, login_user, logout_user
 from wfmh import app, db
-from wfmh.forms import WFMHLoginForm, WFMHRegistrationForm
+from wfmh.forms import WFMHLoginForm, WFMHRegistrationForm, WFMHBookingForm, WFMHCancellationForm
 from wfmh.models import Home, Worker
 
 @app.route("/")
@@ -10,11 +10,15 @@ def landing_page():
     return render_template('home.html')
 
 
-@app.route("/browse")
+@app.route("/browse", methods=['GET', 'POST'])
 @login_required
 def browse_homes():
+    booking_form = WFMHBookingForm()
+    if booking_form.validate_on_submit():
+        print(request.form.get('wfmh_booking'))
+    cancellation_form = WFMHCancellationForm()
     homes = Home.query.all()
-    return render_template('browse.html', homes=homes)
+    return render_template('browse.html', homes=homes, b_form=booking_form, c_form = cancellation_form)
 
 
 @app.route("/about")

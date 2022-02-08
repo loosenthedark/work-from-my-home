@@ -21,8 +21,10 @@ class WFMHRegistrationForm(FlaskForm):
             raise ValidationError(
                 'That email is already registered! Please try again with a different email address.')
 
-    r_profile_name = StringField(label='Enter profile name', validators=[Length(min=3, max=20), DataRequired()])
-    r_email = StringField(label='Enter email', validators=[Length(min=7), Email(), DataRequired()])
+    r_profile_name = StringField(label='Enter profile name', validators=[
+                                 Length(min=3, max=20), DataRequired()])
+    r_email = StringField(label='Enter email', validators=[
+                          Length(min=7), Email(), DataRequired()])
     r_password = PasswordField(
         label='Enter password', validators=[Length(min=8), DataRequired()])
     r_password_confirm = PasswordField(
@@ -31,7 +33,16 @@ class WFMHRegistrationForm(FlaskForm):
 
 
 class WFMHLoginForm(FlaskForm):
-    l_profile_name = StringField(label='Enter profile name', validators=[DataRequired()])
+    l_profile_name = StringField(
+        label='Enter profile name', validators=[DataRequired()])
     l_password = PasswordField(
         label='Enter password', validators=[DataRequired()])
     l_submit = SubmitField(label='LOGIN')
+
+
+class WFMHBookingForm(FlaskForm):
+    b_submit = SubmitField(label='BOOK')
+
+
+class WFMHCancellationForm(FlaskForm):
+    c_submit = SubmitField(label='CANCEL')

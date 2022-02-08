@@ -42,8 +42,8 @@
 >
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="bookingModalLabel">Booking</h5>
+      <div class="modal-header bg-primary text-white">
+        <h5 class="modal-title text-center" id="bookingModalLabel">Booking</h5>
         <button
           type="button"
           class="btn-close"
@@ -51,15 +51,34 @@
           aria-label="Close"
         ></button>
       </div>
-      <div class="modal-body">
-        <h6 class="card-subtitle fw-normal">Are you sure you want to book {{ home.summary }} in {{ home.location }} @ €{{ home.daily_rate }} per day?</h6>
+      <div class="modal-body text-center">
+        <form method="post">
+          {{ b_form.hidden_tag() }}
+          <h6 class="card-subtitle fw-normal my-2">
+            Are you sure you want to book {{ home.summary }} in {{ home.location
+            }} @ €{{ home.daily_rate }} per day?
+          </h6>
+          <div class="text-center text-warning">
+            <p class="my-0"><i class="fas fa-exclamation-triangle"></i></p>
+            <p>
+              <em>
+                Clicking the button below will confirm your purchase of this
+                item.
+              </em>
+            </p>
+          </div>
+          <input id="wfmh_booking" name="wfmh_booking" type="hidden" value="{{ home.summary }}">
+          {{ b_form.b_submit(class="btn btn-success btn-block") }}
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Close
+          </button>
+        </form>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-          Close
-        </button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+      <div class="modal-footer"></div>
     </div>
   </div>
 </div>
