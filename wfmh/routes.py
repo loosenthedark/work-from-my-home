@@ -33,12 +33,15 @@ def browse_homes():
         wfmh_cancellation_obj = Home.query.filter_by(
             summary=wfmh_cancellation).first()
         if wfmh_cancellation_obj:
-            wfmh_cancellation_obj.reserved_by = None
-            current_user.wallet += wfmh_cancellation_obj.daily_rate
-            db.session.commit()
-            flash(
-                f'Cancellation confirmed! You just released {wfmh_cancellation_obj.summary} back to the WFMH marketplace.', category='success'
-                )
+            if current_user.has_previously_booked_home(wfmh_cancellation_obj):
+                wfmh_cancellation_obj.cancel(current_user)
+                flash(
+                    f'Cancellation confirmed! You just released {wfmh_cancellation_obj.summary} back to the WFMH marketplace.', category='success'
+                    )
+            else:
+                flash(
+                    f"Something went wrong with your attempt to cancel your booking of {wfmh_cancellation_obj.summary}. Please refresh the page and try again.", category='danger'
+                    )
         return redirect(url_for('browse_homes'))
     if request.method == 'GET':
         available_homes = Home.query.filter_by(reserved_by=None)

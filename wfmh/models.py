@@ -38,6 +38,9 @@ class Worker(db.Model, UserMixin):
     def has_sufficient_funds(self, home_obj):
         return self.wallet >= home_obj.daily_rate
 
+    def has_previously_booked_home(self, home_obj):
+        return home_obj in self.homes
+
 
 class Home(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
@@ -53,4 +56,9 @@ class Home(db.Model):
     def book(self, user):
         self.reserved_by = user.id
         user.wallet -= self.daily_rate
+        db.session.commit()
+
+    def cancel(self, user):
+        self.reserved_by = None
+        user.wallet += self.daily_rate
         db.session.commit()
