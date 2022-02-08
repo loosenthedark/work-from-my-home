@@ -1,9 +1,6 @@
-astroid==2.9.3
-isort==5.10.1
-lazy-object-proxy==1.7.1
-mccabe==0.6.1
-platformdirs==2.4.1
-pylint==2.12.2
-toml==0.10.2
-typing-extensions==4.0.1
-wrapt==1.13.3
+Flask_SQLAlchemy==2.5.1
+Flask_WTF==1.0.0
+Flask_Bcrypt==0.7.1
+Flask==2.0.2
+WTForms==3.0.1
+Flask_Login==0.5.0
