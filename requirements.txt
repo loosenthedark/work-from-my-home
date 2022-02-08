@@ -34,6 +34,7 @@ Pillow==8.1.2
 pipreqs==0.4.10
 prompt-toolkit==1.0.14
 protobuf==3.15.8
+psycopg2-binary==2.9.3
 PyAutoGUI==0.9.53
 pycodestyle==2.7.0
 pycparser==2.21
