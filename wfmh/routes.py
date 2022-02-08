@@ -20,9 +20,7 @@ def browse_homes():
         wfmh_booking_obj = Home.query.filter_by(summary=wfmh_booking).first()
         if wfmh_booking_obj:
             if current_user.has_sufficient_funds(wfmh_booking_obj):
-                wfmh_booking_obj.reserved_by = current_user.id
-                current_user.wallet -= wfmh_booking_obj.daily_rate
-                db.session.commit()
+                wfmh_booking_obj.book(current_user)
                 flash(
                     f'Booking confirmed! You just booked {wfmh_booking_obj.summary} for €{wfmh_booking_obj.daily_rate}.', category='success')
             else:

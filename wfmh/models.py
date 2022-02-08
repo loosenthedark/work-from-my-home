@@ -49,3 +49,8 @@ class Home(db.Model):
 
     def __repr__(self):
         return f'Home {self.id}: {self.summary}'
+
+    def book(self, user):
+        self.reserved_by = user.id
+        user.wallet -= self.daily_rate
+        db.session.commit()
