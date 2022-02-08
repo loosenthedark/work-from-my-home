@@ -11,17 +11,16 @@ class Worker(db.Model, UserMixin):
     id = db.Column(db.Integer(), primary_key=True)
     profile_name = db.Column(db.String(length=20), nullable=False, unique=True)
     worker_email = db.Column(db.String(length=50), nullable=False, unique=True)
-    worker_password = db.Column(
-        db.String(length=60), nullable=False)
+    worker_password = db.Column(db.String(length=60), nullable=False)
     wallet = db.Column(db.Integer(), nullable=False, default=1000)
-    homes = db.relationship('Home', backref='wfmh_worker', lazy=True)
+    homes = db.relationship("Home", backref="wfmh_worker", lazy=True)
 
     def __repr__(self):
-        return f'Worker {self.id}: {self.profile_name}'
+        return f"Worker {self.id}: {self.profile_name}"
 
     @property
     def format_wallet(self):
-        return f'€{self.wallet:,}'
+        return f"€{self.wallet:,}"
 
     @property
     def make_password_secure(self):
@@ -29,8 +28,9 @@ class Worker(db.Model, UserMixin):
 
     @make_password_secure.setter
     def make_password_secure(self, unhashed_password):
-        self.worker_password = bcrypt.generate_password_hash(
-            unhashed_password).decode('utf-8')
+        self.worker_password = bcrypt.generate_password_hash(unhashed_password).decode(
+            "utf-8"
+        )
 
     def check_password_attempt(self, password_attempt):
         return bcrypt.check_password_hash(self.worker_password, password_attempt)
@@ -48,10 +48,10 @@ class Home(db.Model):
     location = db.Column(db.String(length=25), nullable=False)
     owner_email = db.Column(db.String(length=50), nullable=False)
     daily_rate = db.Column(db.Integer(), nullable=False)
-    reserved_by = db.Column(db.Integer(), db.ForeignKey('worker.id'))
+    reserved_by = db.Column(db.Integer(), db.ForeignKey("worker.id"))
 
     def __repr__(self):
-        return f'Home {self.id}: {self.summary}'
+        return f"Home {self.id}: {self.summary}"
 
     def book(self, user):
         self.reserved_by = user.id
@@ -60,5 +60,5 @@ class Home(db.Model):
 
     def cancel(self, user):
         self.reserved_by = None
-        user.wallet += self.daily_rate
+        user.wallet = self.daily_rate
         db.session.commit()
