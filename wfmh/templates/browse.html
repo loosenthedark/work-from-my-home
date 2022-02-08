@@ -56,7 +56,8 @@ block content %}
     <p class="text-center mb-3">
       Click on an item to place it back on the market
     </p>
-    {% for home in my_homes %}
+    {% for home in my_homes %} {% include 'helpers/modals_cancellation.html'
+    %}
     <div class="card">
       <img src="https://picsum.photos/300/450" class="card-img-top" alt="..." />
       <div class="card-body">
@@ -68,11 +69,11 @@ block content %}
         <!-- button to trigger cancellation modal -->
         <button
           type="button"
-          class="btn btn-outline-info"
+          class="btn btn-warning"
           data-bs-toggle="modal"
           data-bs-target="#cancellationModal{{ home.id }}"
         >
-          Sell this Item
+          CANCEL BOOKING
         </button>
       </div>
     </div>
