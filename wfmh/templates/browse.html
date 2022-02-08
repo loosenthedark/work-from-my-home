@@ -65,31 +65,15 @@ block content %}
         <p class="card-text">{{ home.summary }}</p>
       </div>
       <div class="card-body">
-        <div
-          class="btn-group"
-          role="group"
-          aria-label="Basic mixed styles example"
+        <!-- button to trigger cancellation modal -->
+        <button
+          type="button"
+          class="btn btn-outline-info"
+          data-bs-toggle="modal"
+          data-bs-target="#cancellationModal{{ home.id }}"
         >
-          <!-- button to trigger info modal -->
-          <button
-            type="button"
-            class="btn btn-primary"
-            data-bs-toggle="modal"
-            data-bs-target="#infoModal{{ home.id }}"
-          >
-            INFO
-          </button>
-          <button type="button" class="btn btn-warning">CENTRE</button>
-          <!-- button to trigger booking modal -->
-          <button
-            type="button"
-            class="btn btn-success"
-            data-bs-toggle="modal"
-            data-bs-target="#bookingModal{{ home.id }}"
-          >
-            BOOK
-          </button>
-        </div>
+          Sell this Item
+        </button>
       </div>
     </div>
     {% endfor %}
