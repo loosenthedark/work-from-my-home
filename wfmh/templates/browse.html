@@ -5,7 +5,8 @@ block content %}
     <h2 class="text-center mb-3 pt-2 px-2">
       Click on any of the WFMH listings below to find out more!
     </h2>
-    {% for home in homes %} {% include 'helpers/modals_booking.html' %}
+    {% for home in available_homes %} {% include 'helpers/modals_booking.html'
+    %}
     <div class="card" style="width: 18rem">
       <img src="https://picsum.photos/400/600" class="card-img-top" alt="..." />
       <div class="card-body">
@@ -50,35 +51,48 @@ block content %}
     </div>
     {% endfor %}
   </div>
-  <div class="col-4 bg-light">
+  <div class="col-md-4 bg-light">
     <h2 class="text-center mb-3 pt-2 px-2">My WFMH reservations</h2>
     <p class="text-center mb-3">
       Click on an item to place it back on the market
     </p>
-    <div class="row">
-      <!-- {% for bought_item in bought_items %} {% include
-      'includes/selling_modals.html' %}
-      <div class="col-md-6">
-        <div style="margin-bottom: 5px" class="card text-center bg-dark">
-          <div class="card-body">
-            <h5 class="card-title">{{ bought_item.name }}</h5>
-            <button
-              type="button"
-              class="btn btn-outline-info"
-              style="margin-bottom: 5px"
-              data-toggle="modal"
-              data-target="#Modal-SellingConfirm-{{ bought_item.id }}"
-            >
-              Sell this Item
-            </button>
-            <p class="card-text">
-              <strong> This item costs ${{ bought_item.price }} </strong>
-            </p>
-          </div>
+    {% for home in my_homes %}
+    <div class="card">
+      <img src="https://picsum.photos/300/450" class="card-img-top" alt="..." />
+      <div class="card-body">
+        <h5 class="card-title">{{ home.location }}</h5>
+        <h6 class="card-subtitle">€{{ home.daily_rate }}</h6>
+        <p class="card-text">{{ home.summary }}</p>
+      </div>
+      <div class="card-body">
+        <div
+          class="btn-group"
+          role="group"
+          aria-label="Basic mixed styles example"
+        >
+          <!-- button to trigger info modal -->
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#infoModal{{ home.id }}"
+          >
+            INFO
+          </button>
+          <button type="button" class="btn btn-warning">CENTRE</button>
+          <!-- button to trigger booking modal -->
+          <button
+            type="button"
+            class="btn btn-success"
+            data-bs-toggle="modal"
+            data-bs-target="#bookingModal{{ home.id }}"
+          >
+            BOOK
+          </button>
         </div>
       </div>
-      {% endfor %} -->
     </div>
+    {% endfor %}
   </div>
 </div>
 {% endblock %}

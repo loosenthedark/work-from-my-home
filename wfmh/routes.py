@@ -28,8 +28,9 @@ def browse_homes():
                     f"Unfortunately you don't have sufficient funds to book {wfmh_booking_obj.summary} @ {wfmh_booking_obj.daily_rate}.", category='danger')
         return redirect(url_for('browse_homes'))
     if request.method == 'GET':
-        homes = Home.query.filter_by(reserved_by=None)
-        return render_template('browse.html', homes=homes, b_form=booking_form, c_form=cancellation_form)
+        available_homes = Home.query.filter_by(reserved_by=None)
+        my_homes = Home.query.filter_by(reserved_by=current_user.id)
+        return render_template('browse.html', available_homes=available_homes, my_homes=my_homes, b_form=booking_form, c_form=cancellation_form)
 
 
 @app.route("/about")
