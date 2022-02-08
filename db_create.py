@@ -1,3 +1,3 @@
-from app import db
+from wfmh import db
 
 db.create_all()
