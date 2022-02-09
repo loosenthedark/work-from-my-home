@@ -32,6 +32,16 @@ https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-iii-web-forms
 
 https://tedboy.github.io/flask/generated/generated/flask.Request.html
 
+https://www.youtube.com/watch?v=FKy21FnjKS0
+
+https://stackoverflow.com/questions/62688256/sqlalchemy-exc-nosuchmoduleerror-cant-load-plugin-sqlalchemy-dialectspostgre#comment118496977_66794960
+
+https://www.youtube.com/watch?v=0cIUQsdxQmw
+
+https://www.youtube.com/watch?v=ZmEg2bLOf3s
+
+https://www.postgresqltutorial.com/postgresql-insert/
+
 https://www.youtube.com/watch?v=Qr4QMBUPxWo
 
 [HTML Formatter](https://www.freeformatter.com/html-formatter.html)
