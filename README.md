@@ -38,9 +38,15 @@ https://stackoverflow.com/questions/62688256/sqlalchemy-exc-nosuchmoduleerror-ca
 
 https://www.youtube.com/watch?v=0cIUQsdxQmw
 
+https://medium.com/daily-programming-tips/deploy-a-flask-app-with-a-sqlite-database-on-heroku-22b5402c5c6
+
 https://www.youtube.com/watch?v=ZmEg2bLOf3s
 
 https://www.postgresqltutorial.com/postgresql-insert/
+
+https://medium.com/whatsgooddev/creating-avatar-using-initials-in-python-with-avinit-2400609c9751
+
+https://github.com/CraveFood/avinit
 
 https://www.youtube.com/watch?v=Qr4QMBUPxWo
 
