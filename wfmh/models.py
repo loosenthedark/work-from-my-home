@@ -1,7 +1,5 @@
 from wfmh import bcrypt, db, login_manager
 from flask_login import UserMixin
-
-
 @login_manager.user_loader
 def load_user(user_id):
     return Worker.query.get(int(user_id))
@@ -42,6 +40,9 @@ class Worker(db.Model, UserMixin):
         return home_obj in self.homes
 
 
+def mydefault(context):
+    return str(context.get_current_parameters()['location'])
+
 class Home(db.Model):
     id = db.Column(db.Integer(), primary_key=True)
     summary = db.Column(db.String(length=50), nullable=False, unique=True)
@@ -52,6 +53,13 @@ class Home(db.Model):
 
     def __repr__(self):
         return f"Home {self.id}: {self.summary}"
+
+    def __init__(self, summary, location, owner_email, daily_rate, reserved_by):
+        self.summary = summary
+        self.location = location
+        self.owner_email = owner_email
+        self.daily_rate = daily_rate
+        self.reserved_by = reserved_by
 
     def book(self, user):
         self.reserved_by = user.id

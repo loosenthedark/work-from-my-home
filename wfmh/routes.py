@@ -57,7 +57,7 @@ def browse_homes():
         return redirect(url_for("browse_homes"))
     if request.method == "GET":
         avatar_colors = ['#005960']
-        avatar = avinit.get_avatar_data_url('Douglas Adams', radius=15, colors=avatar_colors)
+        avatar = avinit.get_avatar_data_url('Paul Harrington', radius=15, colors=avatar_colors)
         available_homes = Home.query.filter_by(reserved_by=None)
         my_homes = Home.query.filter_by(reserved_by=current_user.id)
         return render_template(
