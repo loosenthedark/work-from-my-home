@@ -1,4 +1,3 @@
-import avinit
 from flask import flash, redirect, render_template, request, url_for
 from flask_login import current_user, login_required, login_user, logout_user
 from wfmh import app, db
@@ -56,8 +55,6 @@ def browse_homes():
                 )
         return redirect(url_for("browse_homes"))
     if request.method == "GET":
-        avatar_colors = ['#005960']
-        avatar = avinit.get_avatar_data_url('Paul Harrington', radius=15, colors=avatar_colors)
         available_homes = Home.query.filter_by(reserved_by=None)
         my_homes = Home.query.filter_by(reserved_by=current_user.id)
         return render_template(
@@ -65,7 +62,7 @@ def browse_homes():
             available_homes=available_homes,
             my_homes=my_homes,
             b_form=booking_form,
-            c_form=cancellation_form, avatar=avatar
+            c_form=cancellation_form
         )
 
 

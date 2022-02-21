@@ -44,10 +44,6 @@ https://www.youtube.com/watch?v=ZmEg2bLOf3s
 
 https://www.postgresqltutorial.com/postgresql-insert/
 
-https://medium.com/whatsgooddev/creating-avatar-using-initials-in-python-with-avinit-2400609c9751
-
-https://github.com/CraveFood/avinit
-
 https://www.youtube.com/watch?v=Qr4QMBUPxWo
 
 [HTML Formatter](https://www.freeformatter.com/html-formatter.html)

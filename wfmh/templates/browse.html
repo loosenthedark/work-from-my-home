@@ -10,6 +10,12 @@ block content %}
     <div class="card">
       <!-- <img src="https://picsum.photos/400/600" class="card-img-top" alt="..." /> -->
       <div class="card-body">
+        <div
+          class="card-avatar d-flex justify-content-center align-items-center"
+        >
+          {% set location_list = home.location.split(' ') %}
+          <h3 class="mb-0 mt-1">{% for item in location_list %}{{ item[0] }}{% endfor %}</h3>
+        </div>
         <h4 class="card-text">{{ home.summary }}</h4>
         <h5 class="card-subtitle">€{{ home.daily_rate }}</h5>
         <h6 class="card-title">{{ home.location }}</h6>
@@ -18,8 +24,8 @@ block content %}
           role="group"
           aria-label="Basic mixed styles example"
         > -->
-          <!-- button to trigger info modal -->
-          <!-- <button
+        <!-- button to trigger info modal -->
+        <!-- <button
             type="button"
             class="btn btn-primary"
             data-bs-toggle="modal"
@@ -28,8 +34,8 @@ block content %}
             INFO
           </button>
           <button type="button" class="btn btn-warning">CENTRE</button> -->
-          <!-- button to trigger booking modal -->
-          <!-- <button
+        <!-- button to trigger booking modal -->
+        <!-- <button
             type="button"
             class="btn btn-success"
             data-bs-toggle="modal"
@@ -56,8 +62,7 @@ block content %}
     <p class="text-center mb-3">
       Click on an item to place it back on the market
     </p>
-    {% for home in my_homes %} {% include 'helpers/modals_cancellation.html'
-    %}
+    {% for home in my_homes %} {% include 'helpers/modals_cancellation.html' %}
     <div class="card">
       <!-- <img src="https://picsum.photos/300/450" class="card-img-top" alt="..." /> -->
       <div class="card-body">
