@@ -11,7 +11,7 @@ block content %}
       <!-- <img src="https://picsum.photos/400/600" class="card-img-top" alt="..." /> -->
       <div class="card-body">
         <div
-          class="card-avatar d-flex justify-content-center align-items-center"
+          class="card-avatar d-flex justify-content-center align-items-center" style='background-color:{{ color[loop.index0] }}'
         >
           {% set location_list = home.location.split(' ') %}
           <h3 class="mb-0 mt-1">{% for item in location_list %}{{ item[0] }}{% endfor %}</h3>

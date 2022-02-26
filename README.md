@@ -44,6 +44,8 @@ https://www.youtube.com/watch?v=ZmEg2bLOf3s
 
 https://www.postgresqltutorial.com/postgresql-insert/
 
+https://www.pythonpool.com/python-random-color/
+
 https://www.youtube.com/watch?v=Qr4QMBUPxWo
 
 [HTML Formatter](https://www.freeformatter.com/html-formatter.html)

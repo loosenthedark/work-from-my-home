@@ -1,3 +1,5 @@
+import matplotlib.pyplot as plt
+import random
 from flask import flash, redirect, render_template, request, url_for
 from flask_login import current_user, login_required, login_user, logout_user
 from wfmh import app, db
@@ -56,13 +58,16 @@ def browse_homes():
         return redirect(url_for("browse_homes"))
     if request.method == "GET":
         available_homes = Home.query.filter_by(reserved_by=None)
+        number_of_colors = Home.query.filter_by(reserved_by=None).count()
+        color = ["#"+''.join([random.choice('0123456789ABCDEF') for j in range(6)])
+                    for i in range(number_of_colors)]
         my_homes = Home.query.filter_by(reserved_by=current_user.id)
         return render_template(
             "browse.html",
             available_homes=available_homes,
             my_homes=my_homes,
             b_form=booking_form,
-            c_form=cancellation_form
+            c_form=cancellation_form, color=color
         )
 
 
