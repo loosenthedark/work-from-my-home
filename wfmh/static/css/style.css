@@ -5,6 +5,10 @@ body {
   background-repeat: no-repeat;
 }
 
+h2 {
+  color: #5964E0;
+}
+
 h3 {
   font-family: 'Sofia Pro', sans-serif;
   color: #fff;
@@ -17,6 +21,10 @@ h4 {
   font-size: 1.25rem;
   line-height: 1.25;
   color: #19202d;
+}
+
+.my-reservations .card h4 {
+  color: #fff;
 }
 
 h5 {
@@ -33,6 +41,10 @@ h6 {
   color: #5964e0;
 }
 
+.btn {
+  font-size: .75rem;
+}
+
 .navbar-brand,
 .navbar-toggler {
   position: relative;
@@ -43,11 +55,19 @@ h6 {
   left: 0.75rem;
 }
 
+.my-reservations {
+  background: #121721;
+}
+
 .card {
   border-radius: 0.375rem;
   border: none;
   margin-bottom: 3.0625rem;
   position: relative;
+}
+
+.my-reservations .card {
+  background: #19202d;
 }
 
 .card-avatar {
@@ -58,7 +78,6 @@ h6 {
   height: 3.125rem;
   border-radius: 30%;
   color: #fff;
-  background-color: #005960;
 }
 
 .card-body {

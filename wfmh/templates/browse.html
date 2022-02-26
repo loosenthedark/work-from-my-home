@@ -2,7 +2,7 @@
 block content %}
 <div class="row m-4">
   <div class="col-md-8 px-0">
-    <h2 class="text-center mb-3 pt-2 px-2">
+    <h2 class="text-center my-5 pt-2 px-2">
       Click on any of the WFMH listings below to find out more!
     </h2>
     {% for home in available_homes %} {% include 'helpers/modals_booking.html'
@@ -57,24 +57,22 @@ block content %}
     </div>
     {% endfor %}
   </div>
-  <div class="col-md-4 bg-light">
-    <h2 class="text-center mb-3 pt-2 px-2">My WFMH reservations</h2>
-    <p class="text-center mb-3">
+  <div class="col-md-4 my-reservations">
+    <h2 class="text-center my-5 pt-2 px-2">My WFMH reservations</h2>
+    <p class="text-center text-light mb-3">
       Click on an item to place it back on the market
     </p>
     {% for home in my_homes %} {% include 'helpers/modals_cancellation.html' %}
     <div class="card">
       <!-- <img src="https://picsum.photos/300/450" class="card-img-top" alt="..." /> -->
       <div class="card-body">
-        <h5 class="card-title">{{ home.location }}</h5>
-        <h6 class="card-subtitle">€{{ home.daily_rate }}</h6>
-        <p class="card-text">{{ home.summary }}</p>
-      </div>
-      <div class="card-body">
+        <h4 class="card-text">{{ home.summary }}</h4>
+        <h5 class="card-subtitle">€{{ home.daily_rate }}</h5>
+        <h6 class="card-title">{{ home.location }}</h6>
         <!-- button to trigger cancellation modal -->
         <button
           type="button"
-          class="btn btn-warning"
+          class="btn btn-warning mt-5 py-2 px-3 text-white"
           data-bs-toggle="modal"
           data-bs-target="#cancellationModal{{ home.id }}"
         >

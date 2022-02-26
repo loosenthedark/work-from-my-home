@@ -1,4 +1,3 @@
-import matplotlib.pyplot as plt
 import random
 from flask import flash, redirect, render_template, request, url_for
 from flask_login import current_user, login_required, login_user, logout_user
